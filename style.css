@@ -1,0 +1,271 @@
+/* Pastel green theme (light) */
+:root[data-theme="light"],
+:root:not([data-theme]) {
+	--bg: #eaf7ef;            /* soft mint */
+	--card: #ffffff;          /* white card */
+	--accent: #7bd389;        /* pastel green */
+	--accent-strong: #4caf50; /* deeper green for focus */
+	--text: #234;             /* dark slate */
+	--muted: #567;            /* muted slate */
+	--ring: rgba(123, 211, 137, 0.45);
+	--danger: #e76f51;
+	--success: #2a9d8f;
+}
+
+/* Dark theme with dark green shades */
+:root[data-theme="dark"] {
+	--bg: #0e1a14;            /* very dark greenish */
+	--card: #11231b;          /* deep green card */
+	--accent: #3ea763;        /* muted emerald */
+	--accent-strong: #2e7d32; /* strong dark green */
+	--text: #e7f5ec;          /* light text */
+	--muted: #a8c3b3;         /* muted light */
+	--ring: rgba(62, 167, 99, 0.35);
+	--danger: #ff8f70;
+	--success: #7adbbf;
+}
+
+* { box-sizing: border-box; }
+html, body {
+	height: 100%;
+}
+body {
+	margin: 0;
+	font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Noto Sans, "Apple Color Emoji", "Segoe UI Emoji";
+	color: var(--text);
+	background: radial-gradient(1200px 600px at 20% 15%, color-mix(in srgb, var(--bg) 85%, #ffffff) 0%, var(--bg) 100%);
+}
+
+.page {
+	min-height: 100%;
+	display: grid;
+	place-items: center;
+	padding: 24px;
+}
+
+.card {
+	width: 100%;
+	max-width: 420px;
+	background: var(--card);
+	border-radius: 16px;
+	padding: 24px;
+	box-shadow: 0 10px 30px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06);
+	border: 1px solid rgba(0,0,0,0.06);
+}
+
+h1, h2 { margin: 0 0 8px; font-weight: 700; }
+p { margin: 0 0 12px; line-height: 1.5; }
+
+/* center-align main text for a cleaner, focused layout */
+h1, h2, p, .card, .message, .muted, .protected-content {
+	text-align: center;
+}
+
+.muted { color: var(--muted); }
+.success { color: var(--accent-strong); font-weight: 600; }
+
+.pin {
+	display: grid;
+	gap: 12px;
+}
+
+.pin-input {
+	width: 100%;
+	font-size: 28px;
+	letter-spacing: 6px;
+	text-align: center;
+	padding: 12px 14px;
+	border-radius: 12px;
+	border: 2px solid transparent;
+	background: color-mix(in srgb, var(--bg) 70%, #ffffff 30%);
+	outline: none;
+	color: var(--text);
+	caret-color: transparent; /* read-only look */
+}
+.pin-input:focus {
+	border-color: var(--accent);
+	box-shadow: 0 0 0 6px var(--ring);
+}
+
+.keypad {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 10px;
+}
+
+.keypad button {
+	padding: 14px 0;
+	font-size: 18px;
+	border: none;
+	border-radius: 12px;
+	background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 20%, #d9f2e3 80%), color-mix(in srgb, var(--bg) 30%, #cbead8 70%));
+	color: var(--text);
+	cursor: pointer;
+	transition: transform 0.04s ease, filter 0.2s ease, box-shadow 0.2s ease;
+	box-shadow: 0 2px 0 rgba(0,0,0,0.25);
+}
+.keypad button:active { transform: translateY(1px); }
+.keypad button:hover {
+	filter: brightness(1.02);
+}
+.keypad button.subtle {
+	background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 20%, #eef6f0 80%), color-mix(in srgb, var(--bg) 30%, #e4efe8 70%));
+	color: var(--text);
+	box-shadow: 0 2px 0 rgba(0,0,0,0.12);
+}
+
+.primary {
+	margin-top: 2px;
+	width: 100%;
+	padding: 12px 16px;
+	font-size: 16px;
+	border: none;
+	border-radius: 12px;
+	background: var(--accent);
+	color: white;
+	cursor: pointer;
+	transition: transform 0.06s ease, background 0.2s ease, box-shadow 0.2s ease;
+	box-shadow: 0 6px 18px color-mix(in srgb, var(--accent) 35%, transparent);
+}
+.primary:hover {
+	background: #6bc67b;
+}
+.primary:active {
+	transform: translateY(1px);
+}
+
+.message {
+	min-height: 20px;
+	font-size: 14px;
+}
+.message.error { color: var(--danger); }
+.message.ok { color: var(--accent-strong); }
+
+.hidden { display: none; }
+
+.protected-content {
+	margin-top: 8px;
+	padding: 12px;
+	background: color-mix(in srgb, var(--bg) 75%, #f3fbf6 25%);
+	border: 1px dashed color-mix(in srgb, var(--accent) 35%, transparent);
+	border-radius: 12px;
+}
+
+#protected { width: 100%; }
+.speech {
+	min-height: 70vh;
+	width: 100%;
+	display: grid;
+	place-items: center;
+	background: transparent;
+}
+.speech #speech-text {
+	/* default size (user requested 12) and romantic font */
+	font-size: 12px;
+	font-weight: 800;
+	letter-spacing: 1px;
+	color: var(--text);
+	text-align: center;
+	font-family: 'Great Vibes', cursive; /* romantic default */
+}
+
+/* Utility classes for dynamic styles (applied by JS per-line) */
+.speech .custom-font { font-family: inherit; }
+.speech .custom-size { font-size: inherit; }
+
+/* subtle shake for incorrect attempts */
+.shake {
+	animation: shake 0.35s ease;
+}
+@keyframes shake {
+	10%, 90% { transform: translateX(-1px); }
+	20%, 80% { transform: translateX(2px); }
+	30%, 50%, 70% { transform: translateX(-3px); }
+	40%, 60% { transform: translateX(3px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*, *::before, *::after { transition: none !important; animation: none !important; }
+}
+
+/* Control buttons - unified style */
+.control-btn {
+	border: none;
+	border-radius: 999px;
+	padding: 10px 12px;
+	background: var(--card);
+	color: var(--text);
+	box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+	cursor: pointer;
+	transition: transform 0.06s ease, filter 0.2s ease;
+	font-size: 18px;
+}
+.control-btn:hover { filter: brightness(1.05); }
+.control-btn:active { transform: translateY(1px); }
+
+/* Top-left controls container */
+.top-left-controls {
+	position: fixed;
+	top: 12px;
+	left: 12px;
+	z-index: 1000;
+	display: flex;
+	gap: 8px;
+}
+
+/* Bottom-right timeline controls container */
+.bottom-right-controls {
+	position: fixed;
+	bottom: 12px;
+	right: 12px;
+	z-index: 1000;
+	display: flex;
+	gap: 8px;
+}
+
+/* Fireworks overlay */
+#fireworks-overlay {
+	position: fixed;
+	inset: 0;
+	background: #000;
+	z-index: 2000; /* above other UI */
+}
+#fireworks-overlay.hidden { display: none; }
+#fireworks-overlay iframe {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+.fireworks-close {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+	z-index: 2100;
+}
+/* Overlay audio toggle in top-left inside overlay */
+.fireworks-top-left {
+	position: absolute;
+	top: 12px;
+	left: 12px;
+	z-index: 2100;
+}
+
+/* Overlay speech centered above iframe */
+.fireworks-speech {
+	position: absolute;
+	inset: 0;
+	display: grid;
+	place-items: center;
+	z-index: 2090;
+	pointer-events: none; /* clicks pass through */
+}
+.fireworks-speech #fireworks-speech-text {
+	color: #ffffff;
+	font-size: 12px; /* default, overridden by JS per-line */
+	font-family: 'Great Vibes', cursive;
+	text-align: center;
+	font-weight: 800;
+	letter-spacing: 1px;
+}

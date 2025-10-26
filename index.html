@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Enter Code</title>
+		<!-- Romantic fonts for speech text -->
+		<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<!-- Top-left controls -->
+		<div class="top-left-controls">
+			<button id="audio-toggle" class="control-btn" aria-label="Toggle music" title="Toggle music">🔊</button>
+		</div>
+		
+		<!-- Bottom-right timeline controls -->
+		<div class="bottom-right-controls">
+			<button id="timeline-rewind" class="control-btn" aria-label="Previous line" title="Previous line">⏮️</button>
+			<button id="timeline-toggle" class="control-btn" aria-label="Pause/Play timeline" title="Pause/Play timeline">⏸️</button>
+			<button id="timeline-forward" class="control-btn hidden" aria-label="Next line" title="Next line">⏭️</button>
+		</div>
+		
+		<audio id="bg-audio" src="music/love.mp3" preload="auto" loop></audio>
+		<main class="page">
+			<section id="lock" class="card" aria-labelledby="lock-title" aria-describedby="lock-desc">
+				<h1 id="lock-title">Enter Passcode</h1>
+				<p id="lock-desc" class="muted">Type the numeric code to unlock</p>
+
+				<div class="pin">
+					<input
+						id="pin-input"
+						class="pin-input"
+						type="password"
+						inputmode="numeric"
+						pattern="[0-9]*"
+						maxlength="6"
+						autocomplete="off"
+						aria-label="Passcode"
+						readonly
+					/>
+
+					<div class="keypad" role="group" aria-label="Numeric keypad">
+						<button data-key="1">1</button>
+						<button data-key="2">2</button>
+						<button data-key="3">3</button>
+						<button data-key="4">4</button>
+						<button data-key="5">5</button>
+						<button data-key="6">6</button>
+						<button data-key="7">7</button>
+						<button data-key="8">8</button>
+						<button data-key="9">9</button>
+						<button data-action="clear" class="subtle" aria-label="Clear">C</button>
+						<button data-key="0">0</button>
+						<button data-action="back" class="subtle" aria-label="Backspace">⌫</button>
+					</div>
+
+					<button id="submit" class="primary" aria-label="Submit code">Unlock</button>
+					<div id="message" class="message" role="status" aria-live="polite"></div>
+				</div>
+			</section>
+
+			<section id="protected" class="hidden" aria-live="polite">
+				<!-- Speech mode words only -->
+				<div id="speech" class="speech hidden" aria-live="polite">
+					<span id="speech-text"></span>
+				</div>
+			</section>
+		</main>
+
+		<!-- Fireworks overlay (loads self-contained Firework app via iframe) -->
+		<div id="fireworks-overlay" class="hidden" aria-hidden="true">
+			<!-- Overlay audio toggle (controls the same root music) -->
+			<div class="fireworks-top-left">
+				<button id="fireworks-audio-toggle" class="control-btn" aria-label="Toggle music" title="Toggle music">🔊</button>
+			</div>
+			<!-- Overlay speech text so lines after trigger appear over fireworks -->
+			<div class="fireworks-speech">
+				<span id="fireworks-speech-text"></span>
+			</div>
+			<iframe id="fireworks-frame" title="Fireworks Show" src="./Firework/index.html" allow="fullscreen" allowfullscreen loading="eager"></iframe>
+		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+		<script src="script.js"></script>
+	</body>
+	</html>
+

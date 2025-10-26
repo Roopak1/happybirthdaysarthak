@@ -1,6 +1,6 @@
 // Simple numeric password mechanism
 // Adjust this PIN to whatever you like
-const CORRECT_PIN = "1234"; // example birthday code
+const CORRECT_PIN = "271008"; // example birthday code
 
 const input = document.getElementById("pin-input");
 const keypad = document.querySelector(".keypad");
@@ -35,7 +35,7 @@ if (fireworksFrame) {
 }
 
 // Enable/disable forward button (set to true to show it, false to hide it)
-const ENABLE_FORWARD_BUTTON = true;
+const ENABLE_FORWARD_BUTTON = false;
 
 // Emoji rain function
 function createEmojiRain(options = {}) {
@@ -214,7 +214,7 @@ const SPEECH_LINES = [
     { text: "And at the end of my digital letter", timings: { fadeIn: 0.7, hold: 3, fadeOut: 0.5, speed: 1 }, fontFamily: "Playfair Display, serif", fontSize: "50px" },
     { text: "...", timings: { fadeIn: 0.7, hold: 3, fadeOut: 0.5, speed: 1 }, fontFamily: "Playfair Display, serif", fontSize: "20px" },
 
-	{ text: "", timings: { fadeIn: 0.5, hold: 4, fadeOut: 0.5, speed: 2 }, fontFamily: "Playfair Display, serif", fontSize: "50px" },
+	{ text: "", timings: { fadeIn: 0.5, hold: 5, fadeOut: 0.5, speed: 2 }, fontFamily: "Playfair Display, serif", fontSize: "50px" },
 
 	{ text: "HAPPY BIRTHDAY SARTHAK", timings: { fadeIn: 3, hold: 10, fadeOut: 1, speed: 1 }, fontFamily: "Playfair Display, serif", fontSize: "80px" },
      
@@ -223,7 +223,7 @@ const SPEECH_LINES = [
     { text: "ALWAYS MINE 😼😼😼", timings: { fadeIn: 2, hold: 3, fadeOut: 0.5, speed: 1 }, fontFamily: "Playfair Display, serif", fontSize: "50px" },
 
 	{ text: "Now come back and tell me how was it", timings: { fadeIn: 2, hold: 3, fadeOut: 0.5, speed: 1 }, fontFamily: "Playfair Display, serif", fontSize: "30px" },
-	{ text: "or you can gaze it for a while", timings: { fadeIn: 2, hold: 3, fadeOut: 0.5, speed: 1 }, fontFamily: "Playfair Display, serif", fontSize: "30px" },
+	{ text: "or you can gaze the fireworks for a while", timings: { fadeIn: 2, hold: 4, fadeOut: 0.5, speed: 1 }, fontFamily: "Playfair Display, serif", fontSize: "30px" },
 	{ text: "click on the heart to restart if you wanna watch it again", timings: { fadeIn: 2, hold: 3, fadeOut: 0.5, speed: 1 }, fontFamily: "Playfair Display, serif", fontSize: "30px" },
 	
 	// End marker - will show the beating heart
